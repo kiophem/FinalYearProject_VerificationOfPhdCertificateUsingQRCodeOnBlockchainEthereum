@@ -1,7 +1,9 @@
 <?php 
-	//Databse Connection file
+	//Database Connection file
 	include('dbconnection.php');
 	
+	//After the user adds a certificate, a QR Code will be automatically created and ready to be downloaded by the user.
+	//The function qrcreate is used to create the QR Code.
 	function qrcreate($certNo)
 	{
 		include('phpqrcode/qrlib.php');
@@ -13,6 +15,8 @@
 		
 		return $filetype;
 	}	
+	
+	//The function download is used to download the displayed QR Code.
 	function download($qrImage){
 		$file_path = 'QRCode/'.$qrImage;
 		$filename = $qrImage;
@@ -78,8 +82,7 @@ http://www.tooplate.com/view/2082-pure-mix
 </div>
 
 
-<!-- Navigation section
-================================================== -->
+<!-- Navigation section================================================== -->
 <div class="nav-container">
    <nav class="nav-inner transparent">
 
@@ -123,8 +126,7 @@ http://www.tooplate.com/view/2082-pure-mix
 </div>
 
 
-<!-- Header section
-================================================== -->
+<!-- Header section================================================== -->
 <section id="header" class="header-four">
 	<div class="container">
 		<div class="row">
@@ -141,8 +143,8 @@ http://www.tooplate.com/view/2082-pure-mix
 </section>
 
 
-<!-- Add certificate section
-================================================== -->
+<!-- Add certificate section================================================== -->
+<!-- This section is mainly for the user to add their certificate's information to the form displayed.-->
 <section id="contact">
    <div class="container">
       <div class="row">
@@ -200,8 +202,7 @@ http://www.tooplate.com/view/2082-pure-mix
 </footer>
 
 
-<!-- Javascript 
-================================================== -->
+<!-- Javascript ================================================== -->
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/isotope.js"></script>
@@ -221,11 +222,13 @@ http://www.tooplate.com/view/2082-pure-mix
 			}
 		}
 		
+		//Here, the code in the parameter for window.web3.eth.Contract will be different for each compilation. It is because,
+		//the smart contract that is used is compiled online on Remix. Hence, the ABI Code will be different each time.
 		async function loadContract() 
 		{
 			return await new window.web3.eth.Contract(
-				[
-	{
+			[
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -273,13 +276,13 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
-	},
-	{
+		},
+		{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -291,8 +294,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"name": "addedCertificate",
 		"type": "event"
-	},
-	{
+		},
+		{
 		"inputs": [],
 		"name": "DebugAddCertificate",
 		"outputs": [
@@ -304,15 +307,15 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [],
 		"name": "DebugDeleteAllCertificate",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -330,8 +333,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -349,8 +352,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -362,15 +365,15 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"name": "deletedCertificate",
 		"type": "event"
-	},
-	{
+		},
+		{
 		"inputs": [],
 		"name": "kill",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -418,8 +421,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -431,8 +434,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"name": "updatedCertificate",
 		"type": "event"
-	},
-	{
+		},
+		{
 		"inputs": [],
 		"name": "getContractInfo",
 		"outputs": [
@@ -469,8 +472,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [],
 		"name": "getListCertificateStatus",
 		"outputs": [
@@ -497,8 +500,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -516,8 +519,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -560,8 +563,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -594,8 +597,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -623,8 +626,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -667,8 +670,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [],
 		"name": "whoAmI",
 		"outputs": [
@@ -684,9 +687,14 @@ http://www.tooplate.com/view/2082-pure-mix
 ]
 	, '0x0f2Cd754A5dFfe8e34F4C2ac5Dc6191fF2f7C502');
 		}
+	
+	//0x0f2Cd754A5dFfe8e34F4C2ac5Dc6191fF2f7C502 is the address of the developer blockchain wallet account, which is Rinkeby Test Network on Metamask.
+
+	//process for submission
 		
-		//process for submission
-		
+	//Here, the function pushContractInfo is used to push the parameters into the Ethereum blockchain. How?
+	//The smart contract will first be compiled on Remix. And then, the user will pay the amount needed (in ETH) to add their certificate to the blockchain.
+	//a,b,c,d,e,f,g are the informations that are pushed into the Ethereum Blockchain.
         async function pushContractInfo(a,b,c,d,e,f,g)
 		{
     		const account = await getCurrentAccount();
@@ -705,6 +713,8 @@ http://www.tooplate.com/view/2082-pure-mix
             return accounts[0];
 		}
 		
+		//The function lets the user know that the website is connected to the Ethereum blockchain. It means the user may add certificates, delete certificates, update certificates, and scan QR codes.
+		//It is important to know that they are connected to each other. It means that the data that is used is from the Ethereum blockchain too, not only from the Database.
 		async function load() 
 		{
 			await loadWeb3();
@@ -723,6 +733,11 @@ http://www.tooplate.com/view/2082-pure-mix
 		load();
 	</script>
 	<?php
+	
+	//After the user clicks the submit button, the data will be saved in a database and on the Ethereum blockchain.
+	//There is no problem with saving data in a database, but it will be a different case to save the data on the Ethereum blockchain.
+	//It is because the user needs to pay (in ETH) for them to put the data on the Ethereum blockchain.
+	//And for this project, the data is kept in SHA256 in order to secure it.
 	if(isset($_POST['submit']))
 	{
 		//getting the post values
@@ -736,6 +751,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		$semesterFinish = hash('sha256',$_POST['semesterFinish']);
 		$checkquery =mysqli_query($con, "select certNo from addcertificate where certNo='$certNo'");
 
+		//The certificate number is chosen as the primary key.
+		//As a result, no two certificates with the same name will be saved.
 		if(mysqli_num_rows($checkquery)>0)
 		{
 			echo "<script>alert('Certificate is already exist.');</script>";
