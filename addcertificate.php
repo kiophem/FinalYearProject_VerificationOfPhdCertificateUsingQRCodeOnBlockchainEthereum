@@ -2,7 +2,7 @@
 	//Database Connection file
 	include('dbconnection.php');
 	
-	//After the user adds a certificate, a QR Code will be automatically created and ready to be downloaded by the user.
+	//After the user adds a certificate, a QR Code will be automatically created and downloaded for the user.
 	//The function qrcreate is used to create the QR Code.
 	function qrcreate($certNo)
 	{
@@ -16,7 +16,7 @@
 		return $filetype;
 	}	
 	
-	//The function download is used to download the displayed QR Code.
+	//The function download is used to automatically download the displayed QR Code.
 	function download($qrImage){
 		$file_path = 'QRCode/'.$qrImage;
 		$filename = $qrImage;
