@@ -1,50 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--
-
-Template 2082 Pure Mix
-
-http://www.tooplate.com/view/2082-pure-mix
-
--->
+<!--Template 2082 Pure Mix http://www.tooplate.com/view/2082-pure-mix-->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="">
 	<meta name="description" content="">
 
-	<!-- Site title
-   ================================================== -->
+	<!-- Site title ================================================== -->
 	<title>Home</title>
 
-	<!-- Bootstrap CSS
-   ================================================== -->
+	<!-- Bootstrap CSS ================================================== -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 
-	<!-- Animate CSS
-   ================================================== -->
+	<!-- Animate CSS ================================================== -->
 	<link rel="stylesheet" href="css/animate.min.css">
 
-	<!-- Font Icons CSS
-   ================================================== -->
+	<!-- Font Icons CSS ================================================== -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/ionicons.min.css">
 
-	<!-- Main CSS
-   ================================================== -->
+	<!-- Main CSS================================================== -->
 	<link rel="stylesheet" href="css/style.css">
 
-	<!-- Google web font 
-   ================================================== -->	
+	<!-- Google web font ================================================== -->	
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
 	
 </head>
 <body>
 
 
-<!-- Preloader section
-================================================== -->
+<!-- Preloader section================================================== -->
 <div class="preloader">
 
 	<div class="sk-spinner sk-spinner-pulse"></div>
@@ -52,8 +39,7 @@ http://www.tooplate.com/view/2082-pure-mix
 </div>
 
 
-<!-- Navigation section
-================================================== -->
+<!-- Navigation section================================================== -->
 <div class="nav-container">
    <nav class="nav-inner transparent">
 
@@ -97,8 +83,7 @@ http://www.tooplate.com/view/2082-pure-mix
 </div>
 
 
-<!-- Header section
-================================================== -->
+<!-- Header section================================================== -->
 <section id="header" class="header-one">
 	<div class="container">
 		<div class="row">
@@ -115,8 +100,7 @@ http://www.tooplate.com/view/2082-pure-mix
 </section>
 
 
-<!-- Portfolio section
-================================================== -->
+<!-- Portfolio section================================================== -->
 <section id="portfolio">
    <div class="container">
       <div class="row">
@@ -128,10 +112,6 @@ http://www.tooplate.com/view/2082-pure-mix
 
                   <ul class="filter-wrapper clearfix">
                            <li><a href="#" data-filter="*" class="selected opc-main-bg">Even certificates needs a validation for themselves</a></li>
-                           <!--li><a href="#" class="opc-main-bg" data-filter=".graphic">Graphic</a></li>
-                           <li><a href="#" class="opc-main-bg" data-filter=".template">Web template</a></li>
-                           <li><a href="#" class="opc-main-bg" data-filter=".photoshop">Photoshop</a></li>
-                        <li><a href="#" class="opc-main-bg" data-filter=".branding">Branding</a></li-->
                         </ul>
 
                         <!-- iso box section -->
@@ -221,8 +201,7 @@ http://www.tooplate.com/view/2082-pure-mix
    </div>
 </section>
 
-<!-- Footer section
-================================================== -->
+<!-- Footer section================================================== -->
 <footer>
 	<div class="container">
 		<div class="row">
