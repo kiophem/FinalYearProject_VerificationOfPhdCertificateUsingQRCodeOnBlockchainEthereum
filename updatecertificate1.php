@@ -7,42 +7,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--
-
-Template 2082 Pure Mix
-
-http://www.tooplate.com/view/2082-pure-mix
-
--->
+<!--Template 2082 Pure Mix http://www.tooplate.com/view/2082-pure-mix-->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="">
 	<meta name="description" content="">
 
-	<!-- Site title
-   ================================================== -->
+	<!-- Site title================================================== -->
 	<title>Update Certificate</title>
 
-	<!-- Bootstrap CSS
-   ================================================== -->
+	<!-- Bootstrap CSS================================================== -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 
-	<!-- Animate CSS
-   ================================================== -->
+	<!-- Animate CSS================================================== -->
 	<link rel="stylesheet" href="css/animate.min.css">
 
-	<!-- Font Icons CSS
-   ================================================== -->
+	<!-- Font Icons CSS================================================== -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/ionicons.min.css">
 
-	<!-- Main CSS
-   ================================================== -->
+	<!-- Main CSS================================================== -->
 	<link rel="stylesheet" href="css/style.css">
 
-	<!-- Google web font 
-   ================================================== -->	
+	<!-- Google web font ================================================== -->	
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
 
   <script src='node_modules/web3/dist/web3.min.js'></script>
@@ -50,8 +38,7 @@ http://www.tooplate.com/view/2082-pure-mix
 <body>
 
 
-<!-- Preloader section
-================================================== -->
+<!-- Preloader section================================================== -->
 <div class="preloader">
 
 	<div class="sk-spinner sk-spinner-pulse"></div>
@@ -59,8 +46,7 @@ http://www.tooplate.com/view/2082-pure-mix
 </div>
 
 
-<!-- Navigation section
-================================================== -->
+<!-- Navigation section================================================== -->
 <div class="nav-container">
    <nav class="nav-inner transparent">
 
@@ -85,7 +71,7 @@ http://www.tooplate.com/view/2082-pure-mix
                       <ul id="nav-menu">
                         <li><a href="index.php">Home</a></li>
                         <li><a href="addcertificate.php">Add Certificate</a></li>
-						<li><a href="displaycertificate.php">Download QR Code</a></li>
+			<li><a href="displaycertificate.php">Download QR Code</a></li>
                         <li><a href="updatecertificate1.php">Update Certificate</a></li>
                         <li><a href="deletecertificate1.php">Delete Certificate</a></li>
                         <li><a href="verifyqrcode.php">Verify Certificate</a></li>
@@ -104,8 +90,7 @@ http://www.tooplate.com/view/2082-pure-mix
 </div>
 
 
-<!-- Header section
-================================================== -->
+<!-- Header section================================================== -->
 <section id="header" class="header-four">
 	<div class="container">
 		<div class="row">
@@ -122,8 +107,7 @@ http://www.tooplate.com/view/2082-pure-mix
 </section>
 
 
-<!-- Add certificate section
-================================================== -->
+<!-- Update certificate section================================================== -->
 <section id="contact">
    <div class="container">
       <div class="row">
@@ -156,8 +140,7 @@ http://www.tooplate.com/view/2082-pure-mix
    </div>
 </section>
 
-<!-- Footer section
-================================================== -->
+<!-- Footer section================================================== -->
 <footer>
 	<div class="container">
 		<div class="row">
@@ -178,8 +161,7 @@ http://www.tooplate.com/view/2082-pure-mix
 </footer>
 
 
-<!-- Javascript 
-================================================== -->
+<!-- Javascript ================================================== -->
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/isotope.js"></script>
@@ -198,7 +180,9 @@ http://www.tooplate.com/view/2082-pure-mix
 				window.ethereum.enable();
 			}
 		}
-		
+
+		//Here, the code in the parameter for window.web3.eth.Contract will be different for each compilation. It is because,
+		//the smart contract that is used is compiled online on Remix. Hence, the ABI Code will be different each time.
 		async function loadContract() 
 		{
 			return await new window.web3.eth.Contract(
@@ -663,8 +647,13 @@ http://www.tooplate.com/view/2082-pure-mix
 	, '0x0f2Cd754A5dFfe8e34F4C2ac5Dc6191fF2f7C502');
 		}
 		
-		//process for submission
+	//0x0f2Cd754A5dFfe8e34F4C2ac5Dc6191fF2f7C502 is the address of the developer blockchain wallet account, which is Rinkeby Test Network on Metamask.
+
+	//process for submission
 		
+	//Here, the function pushContractInfo is used to push the parameters into the Ethereum blockchain. How?
+	//The smart contract will first be compiled on Remix. And then, the user will pay the amount needed (in ETH) to update their certificate to the blockchain.
+	//a,b,c,d,e,f,g are the informations that are pushed into the Ethereum Blockchain.
         async function pushContractInfo(a,b,c,d,e,f,g)
 		{
     		const account = await getCurrentAccount();
@@ -676,7 +665,10 @@ http://www.tooplate.com/view/2082-pure-mix
             const accounts = await window.web3.eth.getAccounts();
             return accounts[0];
 		}
-		
+
+		//The function lets the user know that the website is connected to the Ethereum blockchain. It means the user may add certificates, delete certificates, update certificates, and scan QR codes.
+		//It is important to know that they are connected to each other. It means that the data that is used is from the Ethereum blockchain too, not only from the Database.
+		async function load() 
 		async function load() 
 		{
 			await loadWeb3();
@@ -696,6 +688,9 @@ http://www.tooplate.com/view/2082-pure-mix
 	</script>   
 	</script>
 	<?php
+	//As usual, the data that is entered by the user will be automatically hashed using SHA256.
+	//After the data is updated in the database, it will be pushed into the Ethereum blockchain through a smart contract on Remix.
+	//Hence, at the end, the data will be updated on both the database and the Ethereum blockchain. 
 	if(isset($_POST['submit']))
 	{
 		//Getting Post Values
@@ -715,13 +710,14 @@ http://www.tooplate.com/view/2082-pure-mix
 			convoDate='$convoDate', semesterFinish='$semesterFinish' where certNo = '$certNo'";	
 			$result = mysqli_query($con,$query);
 			
-			if ($result) {
-				//echo "<script>alert('You have successfully update the certificate');</script>";
-				//echo "<script type='text/javascript'> document.location ='updatecertificate.php'; </script>";	
+			if ($result) {	
 				echo "<script type='text/javascript'>pushContractInfo('$certNo','$name','$ic','$studentId','$programme','$convoDate','$semesterFinish');</script>";	
 			} 	
 		}
 		else {
+			//Besides the certificate number, other information can be updated in the update certificate section. 
+			//But, if the certificate number also needed to changed, it means the user have to delete the certificate number on delete certificate section.
+			//And add the new certificate. 
 			echo "<script>alert('Certificate cannot be updated. Please try again');</script>";
 		}
 	
