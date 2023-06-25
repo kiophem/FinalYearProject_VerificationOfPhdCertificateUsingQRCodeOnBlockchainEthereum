@@ -9,11 +9,7 @@ include('dbconnection.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--
-
-Template 2082 Pure Mix
-
-http://www.tooplate.com/view/2082-pure-mix
+<!--Template 2082 Pure Mix http://www.tooplate.com/view/2082-pure-mix
 
 -->
 	<meta charset="utf-8">
