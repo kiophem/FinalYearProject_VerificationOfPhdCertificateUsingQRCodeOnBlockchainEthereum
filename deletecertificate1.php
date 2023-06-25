@@ -6,42 +6,30 @@ include('dbconnection.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--
-
-Template 2082 Pure Mix
-
-http://www.tooplate.com/view/2082-pure-mix
-
--->
+<!--Template 2082 Pure Mix http://www.tooplate.com/view/2082-pure-mix-->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="">
 	<meta name="description" content="">
 
-	<!-- Site title
-   ================================================== -->
+	<!-- Site title================================================== -->
 	<title>Delete Certificate</title>
 
-	<!-- Bootstrap CSS
-   ================================================== -->
+	<!-- Bootstrap CSS================================================== -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 
-	<!-- Animate CSS
-   ================================================== -->
+	<!-- Animate CSS================================================== -->
 	<link rel="stylesheet" href="css/animate.min.css">
 
-	<!-- Font Icons CSS
-   ================================================== -->
+	<!-- Font Icons CSS================================================== -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/ionicons.min.css">
 
-	<!-- Main CSS
-   ================================================== -->
+	<!-- Main CSS================================================== -->
 	<link rel="stylesheet" href="css/style.css">
 
-	<!-- Google web font 
-   ================================================== -->	
+	<!-- Google web font ================================================== -->	
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
 
   <script src='node_modules/web3/dist/web3.min.js'></script>
@@ -49,8 +37,7 @@ http://www.tooplate.com/view/2082-pure-mix
 <body>
 
 
-<!-- Preloader section
-================================================== -->
+<!-- Preloader section================================================== -->
 <div class="preloader">
 
 	<div class="sk-spinner sk-spinner-pulse"></div>
@@ -58,8 +45,7 @@ http://www.tooplate.com/view/2082-pure-mix
 </div>
 
 
-<!-- Navigation section
-================================================== -->
+<!-- Navigation section================================================== -->
 <div class="nav-container">
    <nav class="nav-inner transparent">
 
@@ -103,8 +89,7 @@ http://www.tooplate.com/view/2082-pure-mix
 </div>
 
 
-<!-- Header section
-================================================== -->
+<!-- Header section================================================== -->
 <section id="header" class="header-five">
 	<div class="container">
 		<div class="row">
@@ -121,8 +106,8 @@ http://www.tooplate.com/view/2082-pure-mix
 </section>
 
 
-<!-- Add certificate section
-================================================== -->
+<!-- Delete certificate section================================================== -->
+<!-- This section is mainly for the user to add their certificate's information to the form displayed.-->
 <section id="contact">
    <div class="container">
       <div class="row">
@@ -141,6 +126,8 @@ http://www.tooplate.com/view/2082-pure-mix
 					<center><div class="contact-submit">
 						<input type="submit" class="form-control submit" name="delcertNo" onclick="return confirm('Do you really want to delete ?');" value="Delete"><br>
 					</div></center>
+					<!-- If the user decides to delete their certificate, both the database and the Ethereum blockchain will no longer keep it. 
+					Of course, the needed amount (in ETH) will be used to delete the certificate. -->
                <center><div class="alert alert-info" role="alert" id="status"></div></center>
 				</form>
 			</div>
@@ -149,8 +136,7 @@ http://www.tooplate.com/view/2082-pure-mix
    </div>
 </section>
 
-<!-- Footer section
-================================================== -->
+<!-- Footer section================================================== -->
 <footer>
 	<div class="container">
 		<div class="row">
@@ -171,8 +157,7 @@ http://www.tooplate.com/view/2082-pure-mix
 </footer>
 
 
-<!-- Javascript 
-================================================== -->
+<!-- Javascript ================================================== -->
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/isotope.js"></script>
@@ -191,12 +176,14 @@ http://www.tooplate.com/view/2082-pure-mix
 				window.ethereum.enable();
 			}
 		}
-		
+
+		//Here, the code in the parameter for window.web3.eth.Contract will be different for each compilation. It is because,
+		//the smart contract that is used is compiled online on Remix. Hence, the ABI Code will be different each time.
 		async function loadContract() 
 		{
 			return await new window.web3.eth.Contract(
 				[
-	{
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -244,13 +231,13 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
-	},
-	{
+		},
+		{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -262,8 +249,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"name": "addedCertificate",
 		"type": "event"
-	},
-	{
+		},
+		{
 		"inputs": [],
 		"name": "DebugAddCertificate",
 		"outputs": [
@@ -275,15 +262,15 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [],
 		"name": "DebugDeleteAllCertificate",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -301,8 +288,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -320,8 +307,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -333,15 +320,15 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"name": "deletedCertificate",
 		"type": "event"
-	},
-	{
+		},
+		{
 		"inputs": [],
 		"name": "kill",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -389,8 +376,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -402,8 +389,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"name": "updatedCertificate",
 		"type": "event"
-	},
-	{
+		},
+		{
 		"inputs": [],
 		"name": "getContractInfo",
 		"outputs": [
@@ -440,8 +427,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [],
 		"name": "getListCertificateStatus",
 		"outputs": [
@@ -468,8 +455,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -487,8 +474,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -531,8 +518,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -565,8 +552,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -594,8 +581,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -638,8 +625,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
+		},
+		{
 		"inputs": [],
 		"name": "whoAmI",
 		"outputs": [
@@ -655,9 +642,11 @@ http://www.tooplate.com/view/2082-pure-mix
 ]
 	, '0x0f2Cd754A5dFfe8e34F4C2ac5Dc6191fF2f7C502');
 		}
-		
-		//process for submission
-		
+		 
+	//0x0f2Cd754A5dFfe8e34F4C2ac5Dc6191fF2f7C502 is the address of the developer blockchain wallet account, which is Rinkeby Test Network on Metamask.
+	
+	//process for deletion
+	//Only a is sent to the smart contract, which means that by using a, which is the certificate number, the whole information of the certificate will be deleted from the Ethereum blockchain.
         async function pushContractInfo(a)
 		{
     		const account = await getCurrentAccount();
@@ -688,6 +677,8 @@ http://www.tooplate.com/view/2082-pure-mix
 		load();
 	</script>
   <?php
+  //This function is used to delete the certificate from the database. 
+  //Only the certificate number is needed to delete the certificate.
   if(isset($_POST['delcertNo']))
   {
   $rcertNo=$_POST['certNo'];
