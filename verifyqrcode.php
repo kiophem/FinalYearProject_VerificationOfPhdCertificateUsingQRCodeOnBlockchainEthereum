@@ -9,38 +9,30 @@ include('dbconnection.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--Template 2082 Pure Mix http://www.tooplate.com/view/2082-pure-mix
-
--->
+<!--Template 2082 Pure Mix http://www.tooplate.com/view/2082-pure-mix-->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="">
 	<meta name="description" content="">
 
-	<!-- Site title
-   ================================================== -->
+	<!-- Site title================================================== -->
 	<title>Verify Certificate</title>
 
-	<!-- Bootstrap CSS
-   ================================================== -->
+	<!-- Bootstrap CSS================================================== -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 
-	<!-- Animate CSS
-   ================================================== -->
+	<!-- Animate CSS================================================== -->
 	<link rel="stylesheet" href="css/animate.min.css">
 
-	<!-- Font Icons CSS
-   ================================================== -->
+	<!-- Font Icons CSS================================================== -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/ionicons.min.css">
 
-	<!-- Main CSS
-   ================================================== -->
+	<!-- Main CSS================================================== -->
 	<link rel="stylesheet" href="css/style.css">
 
-	<!-- Google web font 
-   ================================================== -->	
+	<!-- Google web font ================================================== -->	
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
   
     <!-- Bootstrap CSS -->
@@ -54,8 +46,7 @@ include('dbconnection.php');
 <body>
 
 
-<!-- Preloader section
-================================================== -->
+<!-- Preloader section================================================== -->
 <div class="preloader">
 
 	<div class="sk-spinner sk-spinner-pulse"></div>
@@ -63,8 +54,7 @@ include('dbconnection.php');
 </div>
 
 
-<!-- Navigation section
-================================================== -->
+<!-- Navigation section================================================== -->
 <div class="nav-container">
    <nav class="nav-inner transparent">
 
@@ -126,8 +116,7 @@ include('dbconnection.php');
 </section>
 
 
-<!-- Verify certificate section
-================================================== -->
+<!-- Verify certificate section================================================== -->
 <section id="contact">
    <div class="container">
       <div class="row">
@@ -162,8 +151,7 @@ include('dbconnection.php');
   </div>
 </section>
 
-<!-- Footer section
-================================================== -->
+<!-- Footer section================================================== -->
 <footer>
 	<div class="container">
 		<div class="row">
@@ -215,8 +203,7 @@ include('dbconnection.php');
 	
     </script>
 
-<!-- Javascript 
-================================================== -->
+<!-- Javascript ================================================== -->
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/isotope.js"></script>
@@ -235,7 +222,9 @@ include('dbconnection.php');
 				window.ethereum.enable();
 			}
 		}
-		
+
+		//Here, the code in the parameter for window.web3.eth.Contract will be different for each compilation. It is because,
+		//the smart contract that is used is compiled online on Remix. Hence, the ABI Code will be different each time.                
 		async function loadContract() 
 		{
 			return await new window.web3.eth.Contract(
@@ -698,7 +687,8 @@ include('dbconnection.php');
 	}
 ]	, '0x0f2Cd754A5dFfe8e34F4C2ac5Dc6191fF2f7C502');
 		}
-		
+
+		//0x0f2Cd754A5dFfe8e34F4C2ac5Dc6191fF2f7C502 is the address of the developer blockchain wallet account, which is Rinkeby Test Network on Metamask.
 		//process for submission
 		
         async function pushContractInfo(a)
@@ -706,21 +696,22 @@ include('dbconnection.php');
     		const isValid = await window.contract.methods.isValidCertificate(a).call();
         if(isValid)
         {
+	//if the certificate is available on both database and blockchain Ethereum, hence the message.
           alert("Certificate is valid.");
         } else
         {
+	//however, if the certificate is not available on both database and blockchain Ethereum, hence the message.
           alert("Certificate is fake.");
         }
-    		//updateStatus(`Contract Successfully Pushed to Blockchain`);
-    		//var id = document.getElementById('certNo').value;
-    		//window.location.replace('submitcertificate.php');
 		}
 		
         async function getCurrentAccount() {
             const accounts = await window.web3.eth.getAccounts();
             return accounts[0];
 		}
-		
+
+		//The function lets the user know that the website is connected to the Ethereum blockchain. It means the user may add certificates, delete certificates, update certificates, and scan QR codes.
+		//It is important to know that they are connected to each other. It means that the data that is used is from the Ethereum blockchain too, not only from the Database.
 		async function load() 
 		{
 			await loadWeb3();
@@ -741,21 +732,12 @@ include('dbconnection.php');
   <?php
   if(isset($_POST['verify']))
 	{
+		//Only the certificate number is sent to the smart contract to check the existence of the certificate.
+		//In fact, when the QR code is originally formed, the only data stored in the QR code is the user's certificate number. 
 		$certNo = $_POST['certNo'];
-		//$query = "select * from addcertificate where certNo = '$certNo'";
-        //$result = mysqli_query($con,$query);
-        //$row = mysqli_num_rows($result);
 		
-		//do something with the hashed value from database here;
-        //if($row>0)
-        //{
-        //echo "<script>alert('The certificate is valid!');</script>";
-			//echo "<script type='text/javascript'> document.location ='scanqrcode.php'; </script>";
         echo "<script type='text/javascript'>pushContractInfo('$certNo');</script>";
-		//}else
-		//{
-			//echo "<script>alert('Certificate is fake!');</script>";
-		//}
+		
     
 	}
   ?>
