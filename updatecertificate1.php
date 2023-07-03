@@ -715,7 +715,7 @@
 			} 	
 		}
 		else {
-			//Besides the certificate number, other information can be updated in the Update Certificate section. 
+			//Except the certificate number, other information can be updated in the Update Certificate section. 
 			//But if the certificate number also needs to be changed, the user has to delete the certificate number in the Delete Certificate section.
 			//And add the new certificate.
 			echo "<script>alert('Certificate cannot be updated. Please try again');</script>";
